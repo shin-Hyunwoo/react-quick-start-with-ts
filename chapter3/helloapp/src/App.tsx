@@ -1,7 +1,22 @@
 import React from 'react';
+import CountryList from './CountryList';
+
+// CountryType을 정의
+export type CountryType = {
+  no: number;
+  country: string;
+  visited: boolean;
+};
 
 // <App/> 컴포넌트 : 함수 컴포넌트
 const App = () => {
+  let list: Array<CountryType> = [
+    { no: 1, country: '이집트', visited: false },
+    { no: 2, country: '일본', visited: true },
+    { no: 3, country: '피지', visited: false },
+    { no: 4, country: '콜롬비아', visited: false },
+  ];
+
   // let msg = 'World';
   let msg = '<i>World</i>'; // HTML 문자열을 {} 내에 작성 시 문자열로 인코딩됨
   // 반환값이 있는 함수
@@ -23,8 +38,11 @@ const App = () => {
       <h2>Hello {msg}!</h2>
       <hr className="dash-style" />
       {/* {} 내부에는 반환값을 가지는 표현식(expression)이라면 모두 배치 가능 */}
-      {/* {} 내부에는 반환값이 없는 if, for문 같은 표현문(statement)는 사용할 수 없음 */}
+      {/* {} 내부에는 반환값이 없는 if, for문 같은 표현문(statement)는 사용할 수 없음  */}
       {addResult(4, 3)}
+
+      {/* CountryList 컴포넌트를 App 컴포넌트에 렌더링  */}
+      <CountryList countries={list} />
     </div>
   );
 };
